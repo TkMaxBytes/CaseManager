@@ -106,7 +106,8 @@ namespace CaseManagerContacts
                 objCon.Open();
                 strMess = string.Format("ODBC Connection to database using DSN '{0}' established", objConBuilder.Dsn);
                 mobjLog.Debug(strMess);
-                if (objCon.State == ConnectionState.Open) {
+                if (objCon.State == ConnectionState.Open)
+                {
                     mobjOdbcConnection = objCon;
                 }
                 else
@@ -124,7 +125,11 @@ namespace CaseManagerContacts
             }
             catch (Exception ex)
             {
-                strMess = String.Format("Couldn't open the database using DSN '{0}' please check that it exists!", objConBuilder.Dsn);
+                /**Terrence Knoesen 
+                 * As there is no definitive error numbers indicating that the DSN is wrong or missing (only message text indicates this)
+                 * it is probably best to leave the error as a generic connection error.
+                **/
+                strMess = String.Format("Couldn't open the database using DSN '{0}'.  Check that the database exists and is running.", objConBuilder.Dsn);
                 mobjLog.Debug(strMess, ex);
                 throw new ApplicationException(strMess, ex);
             }
