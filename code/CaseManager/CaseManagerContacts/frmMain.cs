@@ -27,13 +27,14 @@ namespace CaseManagerContacts
 
             OdbcConnection objCon = null;
             objCon = Program.GetDatabaseConnection();
+
             if (objCon.State != System.Data.ConnectionState.Open)
             {
                 strMess = "There is no open ODBC conenction to the datbase";
                 mobjLog.Debug(strMess);
                 MessageBox.Show(this, strMess,"", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-
+            
             strMess = "Set initial screen for the contacts.";
             mobjLog.Debug(strMess);
             textBoxFirstName.Text = "";

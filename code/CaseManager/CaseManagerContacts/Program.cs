@@ -83,8 +83,12 @@ namespace CaseManagerContacts
 
             mobjLog.Debug("Exit");
         }
-            
 
+        /// <summary>
+        /// This will open a OdbcConnection to the database assign it to a module variable
+        /// and then return a reference to this variable.
+        /// </summary>
+        /// <returns></returns>
         public static OdbcConnection GetDatabaseConnection()
         {
 
@@ -108,6 +112,10 @@ namespace CaseManagerContacts
                 mobjLog.Debug(strMess);
                 if (objCon.State == ConnectionState.Open)
                 {
+                    /**Terrence Knoesen 
+                     * Assign the connection to the module level
+                     * variable.
+                    **/
                     mobjOdbcConnection = objCon;
                 }
                 else
@@ -135,13 +143,19 @@ namespace CaseManagerContacts
             }
             finally
             {
+                /**Terrence Knoesen 
+                 * Clear down the conneciton.
+                **/
+                if (objCon != null && objCon.State == ConnectionState.Open)
+                {
+                    objCon.Close();
+                }
                 objConBuilder = null;
                 objCon = null;
             }
 
 
             mobjLog.Debug("Exit");
-
 
             return mobjOdbcConnection;
         }
