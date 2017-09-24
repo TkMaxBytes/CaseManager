@@ -26,9 +26,17 @@ namespace CaseManagerContacts
             mobjLog.Debug("Enter");
 
             OdbcConnection objCon = null;
-            objCon = Program.GetDatabaseConnection();
 
-            if (objCon.State != System.Data.ConnectionState.Open)
+            try
+            {
+                objCon = Program.GetDatabaseConnection();
+            }   
+            catch (System.Exception ex)
+            {
+                strMess = "Could not establish connection to the database!";
+                mobjLog.Fatal(strMess, ex);
+                throw;
+            }
             {
                 strMess = "There is no open ODBC conenction to the datbase";
                 mobjLog.Debug(strMess);
