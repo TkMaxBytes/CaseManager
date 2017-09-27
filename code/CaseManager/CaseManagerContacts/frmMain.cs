@@ -265,8 +265,9 @@ namespace CaseManagerContacts
 
             string strMess = null;
             mobjLog.Debug("Enter");
-
+            this.buttonNewContact.Enabled = false;
             SaveContact();
+            this.buttonNewContact.Enabled = true;
 
             mobjLog.Debug("Exit");
         }
