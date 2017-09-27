@@ -37,12 +37,9 @@ namespace CaseManagerContacts
                 mobjLog.Fatal(strMess, ex);
                 throw;
             }
-            {
-                strMess = "There is no open ODBC conenction to the datbase";
-                mobjLog.Debug(strMess);
-                MessageBox.Show(this, strMess,"", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            
+ 
+
+
             strMess = "Set initial screen for the contacts.";
             mobjLog.Debug(strMess);
             textBoxFirstName.Text = "";

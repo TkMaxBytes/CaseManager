@@ -141,18 +141,6 @@ namespace CaseManagerContacts
                 mobjLog.Debug(strMess, ex);
                 throw new ApplicationException(strMess, ex);
             }
-            finally
-            {
-                /**Terrence Knoesen 
-                 * Clear down the conneciton.
-                **/
-                if (objCon != null && objCon.State == ConnectionState.Open)
-                {
-                    objCon.Close();
-                }
-                objConBuilder = null;
-                objCon = null;
-            }
 
 
             mobjLog.Debug("Exit");
