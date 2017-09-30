@@ -6,8 +6,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using log4net;
+using caseman.dismodel;
 
-namespace CaseManagerContacts
+namespace caseman
 {
     static class Program
     {
