@@ -40,7 +40,15 @@ namespace caseman
             //SetupApplicationLog4Net();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            try
+            {
+                Application.Run(new frmMain());
+            }
+            catch (Exception ex)
+            {
+                strMess = "The application has failed with an exception!";
+                mobjLog.Fatal(strMess, ex);
+            }
 
             mobjLog.Debug("Exit");
 
