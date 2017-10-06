@@ -17,8 +17,8 @@ namespace caseman
 			/// </summary>
 			public class Contact {
                 /// <summary>
-                /// Get the logger for this class
-                /// </summary>
+				/// This the Log4Net logger for this class.
+				/// </summary>
                 private static readonly ILog mobjLog = LogManager.GetLogger(typeof(Contact));
 
                 private string mstrLastName = null;
@@ -61,7 +61,7 @@ namespace caseman
                             strMess = "A title can't be a number!";
                             throw new ArgumentException(strMess);
                         }
-                        mstrTitle = value;
+                        mstrTitle = TrimStringOrNull(value);
                     }
                 }
 
@@ -80,15 +80,7 @@ namespace caseman
                             strMess = "A FirstName can't be a number!";
                             throw new ArgumentException(strMess);
                         }
-                        if (!string.IsNullOrEmpty(value))
-                        {
-                            mstrFirstName = value.Trim();
-                        }
-                        else
-                        {
-                            mstrFirstName = value;
-                        }
-
+                        mstrFirstName = TrimStringOrNull(value);
                     }
                 }
 
@@ -98,6 +90,8 @@ namespace caseman
                 /// This is the last name of the contact
                 /// </summary>
                 public string LastName{
+                    //REQ038 - Contact must have a LastName
+                    //REQ043 - The LastName should have no leading spaces
                     get { return mstrLastName; }
 
                     set
@@ -110,15 +104,8 @@ namespace caseman
                             
                             throw new ArgumentException(strMess);
                         }
-                        if (string.IsNullOrEmpty(value))
-                        {
-                            mstrLastName = value.Trim();
-                        }
-                        else
-                        {
-                            mstrLastName = value;
-                        }
-
+                        //REQ044 - The LastName should have no trailing spaces
+                        mstrLastName = TrimStringOrNull(value);
                     }
                 }
 
@@ -138,19 +125,25 @@ namespace caseman
                             strMess = "A PreferredName can't be a number!";
                             throw new ArgumentException(strMess);
                         }
-                        if (string.IsNullOrEmpty(value))
-                        {
-                            mstrPreferredName = value.Trim();
-                        }
-                        else
-                        {
-                            mstrPreferredName = value;
-                        }
+                        mstrPreferredName = TrimStringOrNull(value);
 
                     }
                 }
 
-
+ 
+				/// <summary>
+				/// This method will trim the strAnyString argument if it is not null.  Otherwise
+				/// it will return null.
+				/// </summary>
+				/// <param name="strAnyString">This is the input string to be trimmed if not null.
+				/// </param>
+				private string TrimStringOrNull(string strAnyString){
+                    if (!string.IsNullOrEmpty(strAnyString))
+                    {
+                        return strAnyString.Trim();
+                    }
+                    return strAnyString;
+				}
 
 
 
