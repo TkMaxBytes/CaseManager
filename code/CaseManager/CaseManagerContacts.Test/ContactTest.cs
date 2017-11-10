@@ -48,7 +48,7 @@ namespace CaseManagerContacts.Test
         {
             Contact MyTestContact = null;
             MyTestContact = new Contact();
-            string testFirstName = "Tom ";
+            string testFirstName = "Abigail       ";
             MyTestContact.FirstName = testFirstName;
             Assert.That(MyTestContact.FirstName == testFirstName.Trim());
         }

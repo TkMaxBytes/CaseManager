@@ -80,7 +80,11 @@ namespace caseman
                             strMess = "A FirstName can't be a number!";
                             throw new ArgumentException(strMess);
                         }
+                        //REQ041 - The FirstName must have no leading spaces
+                        //REQ042 - The FirstName must have no trailing spaces
                         mstrFirstName = TrimStringOrNull(value);
+                        //mstrFirstName = value;
+                        //Checking Import
                     }
                 }
 
@@ -153,3 +157,4 @@ namespace caseman
     }
     
 }
+
