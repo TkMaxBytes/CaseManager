@@ -13,7 +13,6 @@ namespace caseman
             public frmMain()
             {
 
-                string strMess = null;
                 mobjLog.Debug("Enter");
 
                 InitializeComponent();
@@ -257,7 +256,6 @@ namespace caseman
 
             private void buttonNewContact_Click(object sender, System.EventArgs e)
             {
-                string strMess = null;
                 mobjLog.Debug("Enter");
 
 
@@ -268,8 +266,6 @@ namespace caseman
 
             private void buttonSaveContact_Click(object sender, System.EventArgs e)
             {
-
-                string strMess = null;
                 mobjLog.Debug("Enter");
                 this.buttonNewContact.Enabled = false;
                 SaveContact();

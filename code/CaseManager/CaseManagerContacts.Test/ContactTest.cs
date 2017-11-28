@@ -7,7 +7,7 @@ using NUnit.Framework;
 using caseman.busmodel.contacts;
 
 
-namespace CaseManagerContacts.Test
+namespace caseman.busmodel.contacts.test
 {
     [TestFixture]
     public class ContactTest
@@ -32,8 +32,7 @@ namespace CaseManagerContacts.Test
             MyTestContact.Title = testTitle;
             Assert.That(MyTestContact.Title == testTitle.Trim());
         }
-
-
+        
         [Test]
         public void CheckFirstName() {
             Contact MyTestContact = null;
