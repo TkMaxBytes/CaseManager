@@ -37,7 +37,7 @@ namespace caseman
                 {
                     strMess = "Could not establish connection to the database!";
                     mobjLog.Fatal(strMess, ex);
-                    throw;
+                    throw ex;
                 }
 
 

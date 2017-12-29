@@ -103,6 +103,20 @@ namespace caseman
 
             string strMess = null;
             mobjLog.Debug("Enter");
+            /**Terrence Knoesen 
+             * Ensure that we don't reconnect to the database more than once.
+             * If the database connection is already establish then just hand out the 
+             * same conneciton rather than handing out more than one.
+            **/
+            strMess = "Check to see if there is a connection to the database...";
+            mobjLog.Debug(strMess);
+            if (mobjOdbcConnection != null && mobjOdbcConnection.State != ConnectionState.Closed)
+            {
+                strMess = "Connection is already established, re-using current one.";
+                mobjLog.Debug(strMess);
+                mobjLog.Debug("Exit");
+                return mobjOdbcConnection;
+            }
 
 
             strMess = "Attempting to get the ODBC connection to the database.";

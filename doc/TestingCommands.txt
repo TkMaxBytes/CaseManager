@@ -1,0 +1,9 @@
+nunit3-console.exe H:\Projects\CaseManager\code\CaseManager\CaseManagerContacts.Test\bin\Debug\CaseManagerContacts.Test.dll
+
+nunit3-console.exe --explore H:\Projects\CaseManager\code\CaseManager\CaseManagerContacts.Test\bin\Debug\CaseManagerContacts.Test.dll
+
+#========Generate Project file.
+nunit3-console.exe --explore=c:\temp\spec.txt H:\Projects\CaseManager\code\CaseManager\CaseManagerContacts.Test\bin\Debug\CaseManagerContacts.Test.dll
+
+
+nunit3-console.exe --explore H:\Projects\CaseManager\code\CaseManager\CaseManagerContacts.Test\bin\Debug\CaseManagerContacts.Test.dll
