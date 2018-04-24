@@ -4,11 +4,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using caseman.datamodel;
+using System.Data.Odbc;
 using caseman.busmodel.contacts;
 
-
-namespace caseman.busmodel.contacts.test
+namespace caseman.datamodel.test
 {
+    [TestFixture]
+    public class ConnectionManagerTest
+    {
+        [Test]
+        public void DsnEmpty()
+        {
+            string strMess = null;
+            OdbcConnection objCon = null;
+            try
+            {
+                objCon = ConnectionManager.GetDatabaseConnection("");
+                strMess = String.Format("Expected exception '{1}' ", "ArgumentException");
+                Assert.Fail(strMess);
+            }
+            catch (ArgumentException)
+            {
+                Assert.Pass();
+            }
+            catch (Exception ex)
+            {
+                strMess = String.Format("Expected exception '{1}' Actual '{2}'", "ArgumentException", ex.GetType().Name);
+                Assert.Fail(strMess);
+            }
+
+        }
+
+    }//Class ConnectionManager
+
+
     [TestFixture]
     public class ContactTest
     {
@@ -32,9 +62,10 @@ namespace caseman.busmodel.contacts.test
             MyTestContact.Title = testTitle;
             Assert.That(MyTestContact.Title == testTitle.Trim());
         }
-        
+
         [Test]
-        public void CheckFirstName() {
+        public void CheckFirstName()
+        {
             Contact MyTestContact = null;
             MyTestContact = new Contact();
             string testFirstName = "Tom";
@@ -75,4 +106,5 @@ namespace caseman.busmodel.contacts.test
 
 
     }
+
 }
